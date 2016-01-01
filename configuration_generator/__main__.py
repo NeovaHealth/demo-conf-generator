@@ -59,10 +59,12 @@ def sanitise_path(module_path):
     :param module_path: User supplied path
     :return: A path that will work
     """
+    if module_path == '/':
+        return ''
+    elif '~' in module_path:
+        return os.path.expanduser(module_path)
     if not module_path:
         return os.getcwd()
-    elif module_path == '/':
-        return ''
 
 if __name__ == '__main__':
     sys.exit(main())
