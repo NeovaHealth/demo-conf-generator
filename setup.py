@@ -9,6 +9,7 @@ setup(
     url="http://github.com/NeovaHealth/demo-conf-generator",
     provides=["openeobs_config_generator"],
     packages=['configuration_generator'],
+    include_package_data=True,
     entry_points={
         "console_scripts": [
             "new_openeobs_config = configuration_generator.__main__:main"

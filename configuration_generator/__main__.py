@@ -8,13 +8,13 @@ from configuration_generator.module_files import ModuleFiles
 
 PARSER = argparse.ArgumentParser('Generate an Open-eObs Module')
 PARSER.add_argument('module_name', type=str, help='Name of module folder')
-PARSER.add_argument('--output_path', type=str,
+PARSER.add_argument('--output', type=str,
                     help='Place to output the module folder')
-PARSER.add_argument('--trust_name', type=str, help='Name of Trust')
-PARSER.add_argument('--trust_status', type=str,
+PARSER.add_argument('--name', type=str, help='Name of Trust')
+PARSER.add_argument('--status', type=str,
                     help='Status of Trust (NHS Trust, Foundation Trust etc)')
-PARSER.add_argument('--trust_email', type=str, help='Email for Trust')
-PARSER.add_argument('--trust_website', type=str, help='Website for Trust')
+PARSER.add_argument('--email', type=str, help='Email for Trust')
+PARSER.add_argument('--website', type=str, help='Website for Trust')
 
 
 def main():
@@ -24,12 +24,12 @@ def main():
     """
     args = PARSER.parse_args()
     module_name = sanitise_name(args.module_name)
-    module_path = sanitise_path(args.output_path)
+    module_path = sanitise_path(args.output)
     trust_details = {
-        'trust_name': args.trust_name,
-        'trust_status': args.trust_status,
-        'trust_email': args.trust_email,
-        'trust_website': args.trust_website
+        'trust_name': args.name,
+        'trust_status': args.status,
+        'trust_email': args.email,
+        'trust_website': args.website
     }
     try:
         ModuleSkeleton(module_name, module_path)
