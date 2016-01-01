@@ -1,0 +1,14 @@
+<openerp>
+    <data>
+       <!--Main Partner-->
+       <record model="res.company" id="base.main_company">
+            <field name="name">{{ trust_name }}</field>
+        </record>
+        <record model="res.partner" id="base.main_partner">
+            <field name="name">{{ trust_name }}</field>
+            <field name="email">{{ trust_email }}</field>
+            <field name="website">{{ trust_website }}</field>
+            <field name="image">{{ trust_logo_encoded }}</field>
+        </record>
+    </data>
+</openerp>
