@@ -16,14 +16,8 @@ class ModuleSkeleton(object):
         :param module_name: String to use as module folder's name
         :param module_path: A path to put the module
         """
-        safe_module_name = module_name.strip().replace(' ', '_')
-        self.module_name = safe_module_name
-        safe_module_path = module_path
-        if not module_path:
-            safe_module_path = os.getcwd()
-        elif module_path == '/':
-            safe_module_path = ''
-        self.module_path = safe_module_path
+        self.module_name = module_name
+        self.module_path = module_path
         self.create_skeleton()
 
     def create_skeleton(self):
@@ -35,7 +29,6 @@ class ModuleSkeleton(object):
         - - - src
         - - - - img
         - - - - xml
-        :return: Path to new module skeleton
         """
         dir_str = '{0}/{1}'
         module_folder = (dir_str.format(self.module_path, self.module_name),
@@ -59,7 +52,6 @@ class ModuleSkeleton(object):
         Create a folder in a given path with given name
         :param path: Where to put folder
         :param name: What to call folder
-        :return: True if all went well
         """
         folder = '{0}/{1}'.format(path, name)
         try:
