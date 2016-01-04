@@ -28,7 +28,10 @@ class ModuleFiles(object):
         self.trust_website = trust_details.get('trust_website', '')
         self.env = Environment(loader=PackageLoader('configuration_generator',
                                                     'templates'))
-        self.module_root = '{0}/{1}'.format(module_path, module_name)
+        if module_path:
+            self.module_root = '{0}/{1}'.format(module_path, module_name)
+        else:
+            self.module_root = '{0}'.format(module_name)
         self.render_config_file()
         self.render_logo_file()
         self.render_data_file()

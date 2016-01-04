@@ -31,7 +31,10 @@ class ModuleSkeleton(object):
         - - - - xml
         """
         dir_str = '{0}/{1}'
-        root_path = dir_str.format(self.module_path, self.module_name)
+        if self.module_path:
+            root_path = dir_str.format(self.module_path, self.module_name)
+        else:
+            root_path = self.module_name
         data_folder = dir_str.format(root_path, 'data')
         static_folder = dir_str.format(root_path, 'static')
         src_folder = dir_str.format(root_path, 'static/src')

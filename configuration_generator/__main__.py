@@ -24,7 +24,9 @@ def main():
     """
     args = PARSER.parse_args()
     module_name = sanitise_name(args.module_name)
-    module_path = sanitise_path(args.output)
+    module_path = args.output
+    if module_path:
+        module_path = sanitise_path(module_path)
     trust_details = {
         'trust_name': args.name,
         'trust_status': args.status,
@@ -40,8 +42,11 @@ def main():
     except RuntimeError:
         print 'Error encountered creating module at {0}/{1}'.format(
             module_path, module_name)
-    print 'Successfully created module at {0}/{1}'.format(
-        module_path, module_name)
+    if module_path:
+        print 'Successfully created module at {0}/{1}'.format(
+            module_path, module_name)
+    else:
+        print 'Successfully create module at {0}'.format(module_name)
 
 
 def sanitise_name(module_name):
@@ -63,8 +68,8 @@ def sanitise_path(module_path):
         return ''
     elif '~' in module_path:
         return os.path.expanduser(module_path)
-    if not module_path:
-        return os.getcwd()
+    # if not module_path:
+    #     return os.getcwd()
 
 if __name__ == '__main__':
     sys.exit(main())
