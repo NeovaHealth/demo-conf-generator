@@ -15,7 +15,7 @@ setup(
             "new_openeobs_config = configuration_generator.__main__:main"
         ],
     },
-    install_requires=['Jinja2==2.8', 'CairoSVG==1.0.19', 'argparse>=1.4.0'],
+    install_requires=['Jinja2==2.7.3', 'CairoSVG==1.0.19', 'argparse>=1.4.0'],
     license="GPL",
     zip_safe=True,
 )
