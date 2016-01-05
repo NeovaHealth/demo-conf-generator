@@ -1,5 +1,5 @@
 CairoSVG==1.0.19
-argparse==1.4.0
+argparse==1.2.1
 mock==1.3.0
 Jinja2>=2.7.3
 nose==1.3.7
