@@ -72,3 +72,51 @@ class TestCreateOdooModuleSkeleton(fake_filesystem_unittest.TestCase):
         self.assertFalse(os.path.isdir('test_module/static/src/xml/xml'))
         self.assertTrue(os.path.isdir('test_module/static/src/img'))
         self.assertFalse(os.path.isdir('test_module/static/src/img/img'))
+        
+    def test_03_create_module_in_top_level_directory(self):
+        """
+        Test that given just a module name it puts the folder in the current
+        directory
+        """
+        self.assertFalse(os.path.isdir('/opt/test_module'))
+        self.assertFalse(os.path.isdir('/opt/test_module/data'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src/xml'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src/img'))
+        ModuleSkeleton('test_module', '/opt')
+        self.assertTrue(os.path.isdir('/opt/test_module'))
+        self.assertTrue(os.path.isdir('/opt/test_module/data'))
+        self.assertFalse(os.path.isdir('/opt/test_module/data/data'))
+        self.assertTrue(os.path.isdir('/opt/test_module/static'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/static'))
+        self.assertTrue(os.path.isdir('/opt/test_module/static/src'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src/src'))
+        self.assertTrue(os.path.isdir('/opt/test_module/static/src/xml'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src/xml/xml'))
+        self.assertTrue(os.path.isdir('/opt/test_module/static/src/img'))
+        self.assertFalse(os.path.isdir('/opt/test_module/static/src/img/img'))
+        
+    def test_04_create_module_in_tilde_defined_directory(self):
+        """
+        Test that given just a module name it puts the folder in the current
+        directory
+        """
+        self.assertFalse(os.path.isdir('~/test_module'))
+        self.assertFalse(os.path.isdir('~/test_module/data'))
+        self.assertFalse(os.path.isdir('~/test_module/static'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src/xml'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src/img'))
+        ModuleSkeleton('test_module', '~')
+        self.assertTrue(os.path.isdir('~/test_module'))
+        self.assertTrue(os.path.isdir('~/test_module/data'))
+        self.assertFalse(os.path.isdir('~/test_module/data/data'))
+        self.assertTrue(os.path.isdir('~/test_module/static'))
+        self.assertFalse(os.path.isdir('~/test_module/static/static'))
+        self.assertTrue(os.path.isdir('~/test_module/static/src'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src/src'))
+        self.assertTrue(os.path.isdir('~/test_module/static/src/xml'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src/xml/xml'))
+        self.assertTrue(os.path.isdir('~/test_module/static/src/img'))
+        self.assertFalse(os.path.isdir('~/test_module/static/src/img/img'))

@@ -68,8 +68,7 @@ def sanitise_path(module_path):
         return ''
     elif '~' in module_path:
         return os.path.expanduser(module_path)
-    # if not module_path:
-    #     return os.getcwd()
+    return module_path
 
 if __name__ == '__main__':
     sys.exit(main())
