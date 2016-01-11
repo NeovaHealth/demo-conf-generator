@@ -61,8 +61,16 @@ class ModuleFiles(object):
         """
         logo_temp = self.env.get_template('logo.svg.j2')
         # render logo.svg
+        svg_width =  200 + (len(self.trust_name) * 17) # 745
+        if len(self.trust_status) > len(self.trust_name):
+        	svg_width = 200 + (len(self.trust_status) * 17)
+        logo_offset = svg_width - 200  # 545
+        text_width = logo_offset - 25  # 520
         logo_file = logo_temp.render(trust_name=self.trust_name,
-                                     trust_status=self.trust_status)
+                                     trust_status=self.trust_status,
+                                     svg_width=svg_width,
+                                     text_width=text_width,
+                                     logo_offset=logo_offset)
 
         # create logo.png file stream
         svg_tmp = NamedTemporaryFile(delete=False)
