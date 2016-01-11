@@ -23,7 +23,10 @@ class TestRendersLogo(unittest.TestCase):
         test_name = 'Open-eObs'
         test_status = 'NHS Trust'
         logo = self.template.render(trust_name=test_name,
-                                    trust_status=test_status)
+                                    trust_status=test_status,
+                                    svg_width=745,
+                                    text_width=520,
+                                    logo_offset=545)
         svg = Et.fromstring(logo)
         rendered_name = svg.findall('./g/text/[@id="trust_name"]')[0]
         rendered_status = svg.findall('./g/text/[@id="trust_status"]')[0]
