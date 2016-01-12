@@ -61,7 +61,7 @@ class ModuleFiles(object):
         """
         logo_temp = self.env.get_template('logo.svg.j2')
         # render logo.svg
-        char_width = 18
+        char_width = 20
         svg_width = 200 + (len(self.trust_name) * char_width) # 745
         if len(self.trust_status) > len(self.trust_name):
             svg_width = 200 + (len(self.trust_status) * char_width)
